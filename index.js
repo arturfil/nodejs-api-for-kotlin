@@ -21,11 +21,12 @@ mongoose
 //Passport middleware
 app.use(passport.initialize());
 // Passport config
+
+const users = require('./routes/users');
 require('./config/passport')(passport);
 
 // Routes setup for Auth
-const users = require('./routes/users');
-app.use('/api/users');
+app.use('/api/users', users);
 
 const PORT = process.env.PORT || 5000;
 
