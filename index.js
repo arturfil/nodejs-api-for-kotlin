@@ -18,15 +18,13 @@ mongoose
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
-//Passport middleware
+//Passport
 app.use(passport.initialize());
-// Passport config
-
-const users = require('./routes/users');
 require('./config/passport')(passport);
 
-// Routes setup for Auth
-app.use('/api/users', users);
+// Routes
+app.use('/api/videogames', require('./routes/videogameItems'));
+app.use('/api/users', require('./routes/users'))
 
 const PORT = process.env.PORT || 5000;
 
